@@ -36,6 +36,7 @@
     color: red;
   }
   
+  /*Desktop*/
   @media (min-width: 480px) {
     .header {
       display: flex;

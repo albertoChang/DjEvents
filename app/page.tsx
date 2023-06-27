@@ -8,7 +8,7 @@ export default function Home() {
         <div>
             <a href='./'
              >
-              <p>
+              <p className={styles.title}>
                 Inmobiliaria JBR SAC
               </p>
             </a>
