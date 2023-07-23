@@ -12,8 +12,6 @@ interface HomeProps {
 export const Home = () => {
   const [event, setEvents] = useState<Event[]>([]);
 
-  
-
   useEffect(() => {    
     const loadInitialData = async () =>{
       try{
