@@ -23,7 +23,7 @@ export const Home = () => {
       }
     }
     loadInitialData();
-    console.log(event);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   return (    
