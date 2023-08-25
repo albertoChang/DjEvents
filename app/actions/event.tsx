@@ -2,7 +2,7 @@ import { API_URL } from '../../config/index'
 
 export const getEvents = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/events`);
+      const response = await fetch(`${API_URL}/api/events?populate=*`);
       
       if (!response.ok) {
         throw new Error('Network response was not ok.');

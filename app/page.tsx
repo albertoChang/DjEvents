@@ -3,6 +3,7 @@ import styles from './styles/page.module.css'
 import { Event, Pagination } from '../app/types/types';
 import { getEvents } from './actions/event';
 import { useEffect, useState } from 'react';
+import EventItem from './components/eventItem';
 
 interface HomeProps {
   data: Event[];
@@ -10,7 +11,7 @@ interface HomeProps {
 }
 
 export const Home = () => {
-  const [event, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {    
     const loadInitialData = async () =>{
@@ -38,9 +39,13 @@ export const Home = () => {
             </a>
         </div>
         <div></div>
-        {event.length === 0 && <h3>No events to show</h3>}
-        {event.map((evt: Event)=>(
-          <h3 key={evt.id}>{evt.attributes.name}</h3>
+        {events.length === 0 && <h3>No events to show</h3>}
+
+        {events.map((evt: Event)=>(
+          <EventItem 
+            evt={evt.attributes} 
+            key={evt.id} 
+          />
         ))}
 
         {/*

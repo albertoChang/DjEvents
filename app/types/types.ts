@@ -1,3 +1,16 @@
+interface EventImageAtt{
+    name: string;
+    url: string;
+}
+
+interface EventImageDetail{
+    id: string;
+    attributes: EventImageAtt;
+}
+
+interface EventImage{
+    data: EventImageDetail;
+}
 
 export interface EventDetail{
     name: string;
@@ -10,7 +23,8 @@ export interface EventDetail{
     description: string;
     createdAt: Date;
     updatedAt: Date;
-    publishedAt: Date;  
+    publishedAt: Date;
+    image: EventImage;
 }
 
 export interface Event {
