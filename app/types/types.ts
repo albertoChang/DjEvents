@@ -42,3 +42,8 @@ export interface PaginationDetail{
 export interface Pagination{ 
     pagination: PaginationDetail;
 }
+
+export interface EventProps {
+    data: Event[];
+    meta: Pagination;
+  }

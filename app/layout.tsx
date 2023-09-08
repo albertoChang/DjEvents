@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import './styles/globals.css';
 import { Inter } from 'next/font/google';
-import Showcase from './components/showcase';
 import Header from './components/header';
 import Footer from './components/footer';
 
@@ -25,9 +24,8 @@ export default function RootLayout({
     <html lang="en">      
       <body className={inter.className}>
         <Header />
-        <Showcase />
-        {children}
-        <Footer />
+        {children}    
+        <Footer />    
       </body>
     </html>
   )
