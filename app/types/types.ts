@@ -46,4 +46,9 @@ export interface Pagination{
 export interface EventProps {
     data: Event[];
     meta: Pagination;
-  }
+}
+
+export interface EventSlug {
+    data: Event;
+    meta: Pagination;
+}

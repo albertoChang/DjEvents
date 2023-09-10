@@ -1,5 +1,5 @@
 'use client';
-import { Event } from "@/app/types/types";
+import { EventSlug } from "@/app/types/types";
 import styles from '@/app/styles/event.module.css'
 import { getEventBySlug } from "@/app/actions/event";
 import { useEffect, useState } from "react";
@@ -7,13 +7,14 @@ import Image from "next/image";
 
 export default function Page({ params }: { params: { slug: string } }) {
     
-  const [evt, setEvt] = useState<Event>()
+  const [evt, setEvt] = useState<EventSlug>()
 
   useEffect(() => {    
     const loadInitialData = async () =>{
       try{
-        const res = await getEventBySlug(params.slug)
+        const res: EventSlug = await getEventBySlug(params.slug)
         setEvt(res)
+        console.log(res)
       } catch (e){
         console.log(e)
       }
@@ -31,7 +32,7 @@ export default function Page({ params }: { params: { slug: string } }) {
     {evt &&
       <div className={styles.event}>
         <div className={styles.controls}>
-          <a href={`/events/edit/${evt?.id}`}>
+          <a href={`/events/edit/${evt.data.id}`}>
             Edit event
           </a>
           <a href='#' className={styles.delete}
@@ -40,16 +41,16 @@ export default function Page({ params }: { params: { slug: string } }) {
           </a>
         </div>
         <span>
-          {new Date(evt.attributes.date).toLocaleDateString('en-US')} at {evt.attributes.time}
+          {new Date(evt.data.attributes.date).toLocaleDateString('en-US')} at {evt.data.attributes.time}
         </span>
         <h1>
-          {evt.attributes.name}
+          {evt.data.attributes.name}
         </h1>
-        {evt.attributes.image && (
+        {evt.data.attributes.image && (
           <div>
             <Image 
                 alt = ''
-                src={evt.attributes.image.data.attributes.url} 
+                src={evt.data.attributes.image.data.attributes.url} 
                 width= {960}
                 height= {600}
             />
@@ -59,19 +60,19 @@ export default function Page({ params }: { params: { slug: string } }) {
           Performers:
         </h3>
         <p>
-          {evt.attributes.performers}
+          {evt.data.attributes.performers}
         </p>
         <h3>
           Description:
         </h3>
         <p>
-          {evt.attributes.description}
+          {evt.data.attributes.description}
         </p>
         <h3>
-          Venue: {evt.attributes.venue}
+          Venue: {evt.data.attributes.venue}
         </h3>
         <p>
-          {evt.attributes.address}
+          {evt.data.attributes.address}
         </p>
         <a href='/events' className={styles.back}>
             {'<'}Go back
